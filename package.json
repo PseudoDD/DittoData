@@ -4,10 +4,17 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./webpack.config.js",
     "start": "node ./server/server.js",
     "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open"
+=======
+    "build": "webpack --config ./webpack.config.js",
+    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve",
+    "win-dev2": "concurrently \"cross-env NODE_ENV=development nodemon server/server.js\" \"cross-env NODE_ENV=development webpack serve --open\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> dev
   },
   "repository": {
     "type": "git",
@@ -46,6 +53,8 @@
     "webpack-dev-server": "^4.10.1"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@mui/material": "^5.10.3",
@@ -55,6 +64,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "fontsource-roboto": "^4.0.0",
+    "nodemon": "^2.0.19",
     "path": "^0.12.7",
     "pg": "^8.8.0",
     "react": "^17.0.2",
