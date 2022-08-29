@@ -1,4 +1,7 @@
 import React from 'react'
+import Login from '../components/Login.jsx'
+import SchemaDisplay from '../components/SchemasDisplay.jsx'
+import Home from '../components/Dashboard.jsx'
 import { Box, Button, Link } from "@mui/material";
 import { Link, useNavigate } from 'react-router-dom';
 

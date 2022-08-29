@@ -5,6 +5,12 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import App from "./App.jsx";
 
 render(
-  <App/>,
-  document.getElementById("root")//
+  <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <Routes>
+        <Route path="/" exact element={<App />} />
+      </Routes>
+    </ThemeProvider>
+  </BrowserRouter>,
+  document.getElementById("root")
 );

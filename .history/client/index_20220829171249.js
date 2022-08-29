@@ -6,5 +6,5 @@ import App from "./App.jsx";
 
 render(
   <App/>,
-  document.getElementById("root")//
+  document.getElementById("root")
 );
