@@ -4,10 +4,11 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./webpack.config.js",
-    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve",
-    "win-dev2": "concurrently \"cross-env NODE_ENV=development nodemon server/server.js\" \"cross-env NODE_ENV=development webpack serve --open\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./server/server.js",
+    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open",
+    "win-dev2": "concurrently \"cross-env NODE_ENV=development nodemon server/server.js\" \"cross-env NODE_ENV=development webpack serve --open\""
   },
   "repository": {
     "type": "git",
@@ -59,6 +60,7 @@
     "fontsource-roboto": "^4.0.0",
     "nodemon": "^2.0.19",
     "path": "^0.12.7",
+    "pg": "^8.8.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
