@@ -4,17 +4,11 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./webpack.config.js",
     "start": "node ./server/server.js",
-    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open"
-=======
-    "build": "webpack --config ./webpack.config.js",
-    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve",
-    "win-dev2": "concurrently \"cross-env NODE_ENV=development nodemon server/server.js\" \"cross-env NODE_ENV=development webpack serve --open\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> dev
+    "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open",
+    "win-dev2": "concurrently \"cross-env NODE_ENV=development nodemon server/server.js\" \"cross-env NODE_ENV=development webpack serve --open\""
   },
   "repository": {
     "type": "git",
