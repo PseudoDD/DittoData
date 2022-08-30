@@ -70,10 +70,10 @@ DittoData allows developers to create dummy data.
    ```sh
    npm install
    ```
-4. Create `.env` in the root directory and enter your API key and Database URI
+4. Create `.env` in the root directory and enter your Database URI
 
    ```js
-   const DB_KEY = "ENTER YOUR ELEPHANTSQL URI";
+   const DB_KEY = 'ENTER YOUR ELEPHANTSQL URI';
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -122,7 +122,7 @@ Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## Contact
 
-Bruno Albero - [LinkedIn](https://www.linkedin.com/in/alberobruno/) - alberobruno@gmai.com
+Bruno Albero - [LinkedIn](https://www.linkedin.com/in/alberobruno/) - alberobruno@gmail.com
 <br>
 Michael Negron - [LinkedIn](https://www.linkedin.com/in/michaelvnegron/) - michaelnegronaudio@gmail.com
 <br>
