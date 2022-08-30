@@ -7,7 +7,7 @@ router.post('/', dittoDataController.getSchemas, (req, res) =>
 );
 
 router.post('/add', dittoDataController.addSchema, (req, res) =>
-  res.status(200).json(res.locals.schemas)
+  res.status(200).json(res.locals.dummyData)
 );
 
 module.exports = router;

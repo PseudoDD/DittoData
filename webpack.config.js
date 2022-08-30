@@ -1,15 +1,9 @@
-
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-require('dotenv').config({ path: './.env' });
 
 const config = {
-
-  entry: [
-    'react-hot-loader/patch',
-    './client/index.js'
-  ],
+  entry: ['react-hot-loader/patch', './client/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -53,15 +47,10 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
-    }),
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify(process.env),
     }),
   ],
 };
 
 module.exports = config;
-
