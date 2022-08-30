@@ -20,7 +20,7 @@ dittoDataController.addSchema = (req, res, next) => {
     VALUES('${JSON.stringify(req.body.schemaColumns)}', ${req.body.user_id})
   `;
 
-  const dummyDataResponse = generateDummyData(req.body.schemaColumns, 50);
+  const dummyDataResponse = generateDummyData(req.body.schemaColumns, 1000);
 
   db.query(queryString, (err) => {
     if (err) {
