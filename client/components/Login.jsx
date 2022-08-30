@@ -1,21 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 import { Box, Typography, Button } from '@mui/material';
 
 export default function Login() {
   const authenticate = async () => {
-    console.log('Getting here');
-    // const axiosGet = await axios.get('http://localhost:3000/api/auth/google');
-    const axiosGet = await fetch('/api/auth/google', {
+    const axiosGet = await fetch('/auth/google', {
       mode: 'no-cors',
-    });
-
-    // const axiosGet = await axios.get('/api/auth/google');
+    })
+      // .then((res) => res.json())
+      .then((data) => console.log('data: ', data));
 
     console.log('Fetched: ', axiosGet);
-    // .then((res) => res.json)
-    // .then((data) => console.log('data: ', data));
-    console.log('Not getting here');
   };
 
   return (
@@ -29,7 +23,7 @@ export default function Login() {
           varient='contained'
           // href='http://localhost:3000/auth/google'
           onClick={() => {
-            authenticate();
+            location.href = 'http://localhost:3000/auth/google';
           }}
         >
           Sign in with Oauth

@@ -7,9 +7,6 @@ require('./auth.js');
 
 const app = express();
 
-// app.use(cors());
-// app.use(cors({ origin: 'http://localhost:8080',optionsSuccessStatus: 200, credentials: true }));
-
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', '*');
@@ -20,25 +17,35 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', 'true');
   next();
 });
+// app.use(cors());
+// app.use(cors({ origin: 'http://localhost:8080',optionsSuccessStatus: 200, credentials: true }));
 
 function isLoggedIn(req, res, next) {
-  req.user ? next() : res.sendStatus(401);
+  if (req.user) {
+    // console.log(req);
+    next();
+  } else {
+    res.sendStatus(401);
+  }
 }
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.get('/', (req, res) => {
-//   res.send('<a href="/auth/google">Authenticate with Google</a>');
-// });
-
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist/index.html'));
+  res.send('<a href="/auth/google">Authenticate with Google</a>');
 });
+
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'dist/index.html'));
+// });
 
 app.get(
   '/auth/google',
+  (req, res, next) => {
+    return next();
+  },
   passport.authenticate('google', { scope: ['email', 'profile'] })
 );
 
@@ -51,12 +58,11 @@ app.get(
 );
 
 app.get('/protected', isLoggedIn, (req, res) => {
-  res.status(200).redirect(303, 'http://localhost:8080/#/');
-  // res.sendStatus(200);
+  res.status(200).redirect('http://localhost:8080/#/');
 
   // res.status(200).redirect(303, '/');
 
-  // res.status(200).json('status');
+  // res.status(200).send('status');
   console.log('redirected');
 });
 
@@ -71,6 +77,7 @@ app.get('/auth/google/failure', (req, res) => {
   res.send('Failed to authenticate..');
 });
 
+//
 const apiRouter = require('./routes/api');
 
 const PORT = 3000;

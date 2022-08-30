@@ -67,7 +67,7 @@ const config = {
         target: 'http://localhost:3000/',
         secure: false,
       },
-      '/assets/**': {
+      '/oauth/': {
         target: 'http://localhost:3000/',
         secure: false,
       },
