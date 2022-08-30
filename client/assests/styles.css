@@ -91,3 +91,15 @@
 .login-btn {
   padding: 20px;
 }
+
+.inputElementsContainer {
+  display: flex;
+  width: 70%;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.inputElement {
+  display: flex;
+}
+
