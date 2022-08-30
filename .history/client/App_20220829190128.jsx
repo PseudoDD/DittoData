@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useSignal} from 'react';
 import MainContainer from './containers/MainContainer.jsx';
 import { Routes, Route, HashRouter} from "react-router-dom";
 import Navbar from './components/Navbar.jsx'
@@ -8,7 +8,7 @@ import SchemasDisplay from './components/SchemasDisplay.jsx';
 
 function App() {
   // TODO: Merge with backend login work to setLoggedIn properly
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useSignal(true);
   
   if(loggedIn) {
     return ( 

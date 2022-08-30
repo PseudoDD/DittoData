@@ -6,9 +6,9 @@ export default function Navbar() {
 
   return (
     <Box component="span" className="Navbar">
-      <Box >Goblin Finder</Box>
-      <Box ><Link className="nav-link" to="/">Home</Link></Box>
-      <Box ><Link className="nav-link" to="/schemas">Schemas</Link></Box>
+      <Box component="span">Goblin Finder</Box>
+      <div><Link className="nav-link" to="/">Home</Link></div>
+      <div><Link className="nav-link" to="/schemas">Schemas</Link></div>
     </Box>
   )
 }
