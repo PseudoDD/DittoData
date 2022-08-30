@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Navbar() {
 
   return (
-    <Box container className="Navbar">
+    <AppBar component="container" className="Navbar">
       <Box >Ditto Data</Box>
       <Box ><Link className="nav-link" to="/">Home</Link></Box>
       <Box ><Link className="nav-link" to="/schemas">Schemas</Link></Box>
-    </Box>
+    </AppBar>
   )
 }

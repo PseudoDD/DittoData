@@ -5,9 +5,9 @@ import PreviewDisplay  from './PreviewDisplay.jsx'
 
 export default function Dashboard() {
   return (
-    <Box sx={{border: '1px solid black'}}>
+    <div>
       <InputsDisplay />
       <PreviewDisplay />
-    </Box>
+    </div>
   )
 }
