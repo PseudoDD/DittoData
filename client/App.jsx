@@ -12,14 +12,14 @@ function App() {
   
   if(loggedIn) {
     return ( 
-      <div className = "App">
-          <HashRouter>
-            <Navbar />
-            <Routes>
-                <Route path = "/" element = {<Dashboard/>}/>
-                <Route path = "/schemas" element = {<SchemasDisplay/>}/>
-            </Routes>
-          </HashRouter>
+      <div className="App">
+        <HashRouter>
+          <Navbar />
+          <Routes>
+            <Route path = "/" element = {<Dashboard/>}/>
+            <Route path = "/schemas" element = {<SchemasDisplay/>}/>
+          </Routes>
+        </HashRouter>
       </div> )
   } else {
     return (

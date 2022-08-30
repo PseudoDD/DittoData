@@ -1,9 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import '../assests/styles.css'
 
-export default function Input() {
-  return (
-    <div class='input'>
+export default function Input(props) {
+  const [fname, setfname] = useState('');
+  const [ftype, setftype] = useState('');
+
+  const initial = useRef(true);
+  useEffect(() => {
+    if(!initial.current) {
+      const row = { id: props.id }
+      row[fname] = ftype; 
+      let found = false;
      
+      for(let i = 0; i < props.inputs.length; i++) {
+        if(props.inputs[i].id === props.id) {
+          props.inputs[i] = row;
+          found = true;
+          break;
+        }    
+      }
+      if(!found) {
+        const newInputsArray = props.inputs;
+        newInputsArray.push(row);
+        props.setInputs(newInputsArray);
+      }
+    }
+    else(initial.current = false);
+  }, [fname, ftype]);
+
+  return (
+    <div className='inputElementsContainer'>
+      <div className='inputElement'>
+        <label for='fname'>Field name:</label> <br/>
+        <input type='text' id='fname' name='fname' 
+          onChange = {e => setfname(e.target.value)} /> <br/>
+      </div>
+      <div className='inputElement'>
+        <label for='fname'>Field type:</label> <br/>
+        <select id='ftype' name='ftype' onChange={e => setftype(e.target.value)}>
+          <option></option>
+          <option value='placeholder'>Placeholder</option>
+          <option value='placeholder'>Placeholder</option>
+          <option value='placeholder'>Placeholder</option>
+          <option value='placeholder'>Placeholder</option>
+          <option value='placeholder'>Placeholder</option>
+          <option value='placeholder'>Placeholder</option>  
+        </select>
+      </div>
     </div>
   )
 }

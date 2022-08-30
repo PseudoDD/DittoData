@@ -4,3 +4,15 @@
   width: 100%;
   border: 1px solid black;
 }
+
+.inputElementsContainer {
+  display: flex;
+  width: 70%;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.inputElement {
+  display: flex;
+}
+
