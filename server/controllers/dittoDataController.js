@@ -1,33 +1,35 @@
 const db = require('../models/dittoDataModels');
+const { generateDummyData } = require('../services/randomizer.js');
 
 const dittoDataController = {};
 
-starWarsController.getSchemas = (req, res, next) => {
-    const queryString = `SELECT * FROM planets WHERE planets._id=${req.query.id}`;
-    db.query(queryString, (err, result) => {
-      if (err) {
-        return next(err);
-      }
-      res.locals.planetDetails = result.rows[0];
-      return next();
-    });
-  };
+dittoDataController.getSchemas = (req, res, next) => {
+  const queryString = `SELECT * FROM schemaTable WHERE user_id=${req.body.user_id}`;
+  db.query(queryString, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    res.locals.schemas = result.rows;
+    return next();
+  });
+};
 
 dittoDataController.addSchema = (req, res, next) => {
   const queryString = `
-    INSERT INTO people(name, gender, species_id, birth_year, eye_color, skin_color, hair_color, mass, height, homeworld_id)
-    VALUES('${req.body.name}',' ${req.body.gender}', '${req.body.species_id}', '${req.body.birth_year}', '${req.body.eye_color}', '${req.body.skin_color}', '${req.body.hair_color}', '${req.body.mass}', '${req.body.height}','${req.body.homeworld_id}') RETURNING *
+    INSERT INTO schemaTable (schemaColumns, user_id)
+    VALUES('${JSON.stringify(req.body.schemaColumns)}', ${req.body.user_id})
   `;
 
-  console.log(queryString);
-  db.query(queryString, (err, result) => {
+  const dummyDataResponse = generateDummyData(req.body.schemaColumns, 1000);
+
+  db.query(queryString, (err) => {
     if (err) {
-      console.log(err, 'Caught add schema error');
       return next(err);
     }
-    console.log('finished adding schema');
-    return next();
   });
+
+  res.locals.dummyData = dummyDataResponse;
+  return next();
 };
 
 module.exports = dittoDataController;
