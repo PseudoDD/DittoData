@@ -5,6 +5,7 @@ import Navbar from './components/Navbar.jsx'
 import Dashboard from './components/Dashboard.jsx'
 import Login from './components/Login.jsx'
 import SchemasDisplay from './components/SchemasDisplay.jsx';
+import "./assests/styles.css";
 
 function App() {
   // TODO: Merge with backend login work to setLoggedIn properly
@@ -18,6 +19,7 @@ function App() {
             <Routes>
                 <Route path = "/" element = {<Dashboard/>}/>
                 <Route path = "/schemas" element = {<SchemasDisplay/>}/>
+                <Route path = "/login" element = {<Login/>}/>
             </Routes>
           </HashRouter>
       </div> )

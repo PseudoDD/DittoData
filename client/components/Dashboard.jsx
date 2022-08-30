@@ -5,7 +5,7 @@ import PreviewDisplay  from './PreviewDisplay.jsx'
 
 export default function Dashboard() {
   return (
-    <Box sx={{border: '1px solid black'}}>
+    <Box className="centerpage">
       <InputsDisplay />
       <PreviewDisplay />
     </Box>
