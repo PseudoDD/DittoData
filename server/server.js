@@ -7,7 +7,19 @@ require('./auth.js');
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+// app.use(cors({ origin: 'http://localhost:8080',optionsSuccessStatus: 200, credentials: true }));
+
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
@@ -17,14 +29,17 @@ app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.get('/', (req, res) => {
+//   res.send('<a href="/auth/google">Authenticate with Google</a>');
+// });
+
 app.get('/', (req, res) => {
-  res.send('<a href="/auth/google">Authenticate with Google</a>');
+  res.sendFile(path.resolve(__dirname, 'dist/index.html'));
 });
 
 app.get(
   '/auth/google',
-  passport.authenticate('google', { scope: ['email', 'profile'] }),
-  () => console.log('test2')
+  passport.authenticate('google', { scope: ['email', 'profile'] })
 );
 
 app.get(
@@ -36,7 +51,13 @@ app.get(
 );
 
 app.get('/protected', isLoggedIn, (req, res) => {
-  res.redirect('http://localhost:8080/loggedin');
+  res.status(200).redirect(303, 'http://localhost:8080/#/');
+  // res.sendStatus(200);
+
+  // res.status(200).redirect(303, '/');
+
+  // res.status(200).json('status');
+  console.log('redirected');
 });
 
 app.get('/logout', (req, res) => {
