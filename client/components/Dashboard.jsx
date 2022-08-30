@@ -6,7 +6,7 @@ import PreviewDisplay  from './PreviewDisplay.jsx'
 //TODO: Add preview functionality
 export default function Dashboard() {
   return (
-    <Box sx={{border: '1px solid black'}}>
+    <Box className="centerpage">
       <InputsDisplay />
       {/* <PreviewDisplay /> */}
     </Box>
