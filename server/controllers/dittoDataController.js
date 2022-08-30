@@ -1,4 +1,5 @@
 const db = require('../models/dittoDataModels');
+const { generateDummyData } = require('../services/randomizer.js');
 
 const dittoDataController = {};
 
@@ -18,16 +19,17 @@ dittoDataController.addSchema = (req, res, next) => {
     INSERT INTO schemaTable (schemaColumns, user_id)
     VALUES('${JSON.stringify(req.body.schemaColumns)}', ${req.body.user_id})
   `;
-  console.log('queryString: ', queryString);
 
-  db.query(queryString, (err, result) => {
+  const dummyDataResponse = generateDummyData(req.body.schemaColumns, 50);
+
+  db.query(queryString, (err) => {
     if (err) {
       return next(err);
     }
-    console.log('result: ', result.rows);
-    res.locals.schemas = result.rows;
-    return next();
   });
+
+  res.locals.dummyData = dummyDataResponse;
+  return next();
 };
 
 module.exports = dittoDataController;
