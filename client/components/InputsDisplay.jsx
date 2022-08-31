@@ -14,10 +14,10 @@ export default function InputsDisplay(props) {
       const newInput = <Input id={counter} inputs={inputs} setInputs={setInputs}/>;
       initialArray.push(newInput);
       counter++;
-    };
+    }
     setInputNumber(4);
     setinputComponents([...initialArray]);
-  },[]); 
+  }, []);
 
   const handleAddField = ()=> {
     const newInput = <Input id={inputNumber} inputs={inputs} setInputs={setInputs}/>;
@@ -25,7 +25,7 @@ export default function InputsDisplay(props) {
     let newInputNumber = inputNumber;
     newInputNumber++;
     setInputNumber(newInputNumber);
-  }
+  };
 
   const handleCreateSchema = ()=> {
     console.log('handling create schema:', inputs);
@@ -61,5 +61,5 @@ export default function InputsDisplay(props) {
         </span>
       </div>
     </>
-  )
+  );
 }
