@@ -41,7 +41,7 @@
 }
 
 .inputsDisplayContainer {
-  border: 1px solid red;
+  
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -49,22 +49,41 @@
   align-items: center;
   max-height: 100%;
 }
-.previewDisplayContainer {
-  border: 1px solid blue;
+.outer-previewDisplayContainer {
+  
   display: flex;
   flex-direction: column;
   width: 50%;
   justify-content: center;
   align-items: center;
-  max-height: 100%;
+  max-height: 450px;
+  box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+-webkit-box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+-moz-box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+}
+.previewDisplayContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid;
+  width:100%;
+  max-height: 450px;
+  margin: 0 0 0 10px;
+  align-items: center;
+  overflow: scroll;
+}
+
+.previewrows{
+  display:flex;
+  width: 50%;
 }
 
 .centerpage {
   border: 1px solid green;
   display: flex;
   padding: 10px;
-  max-height: 500px;
-  overflow: auto;
+  margin: 2px;
+  max-height: 600px;
+  justify-content: space-around;
   border-radius: 20px;
   background-color: whitesmoke;
   box-shadow: 9px 9px 16px rgb(163, 177, 198, 0.2),
@@ -72,6 +91,7 @@
 }
 .centerpage div {
   display: flex;
+  justify-content: space-between;
   padding: 10px;
   height: 100%;
 }
@@ -103,3 +123,44 @@
   display: flex;
 }
 
+.outer-inputs-container{
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+#inputs-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  width:100%;
+  height: 450px;
+  max-height: 450px;
+  margin: 0 0 0 10px;
+  align-items: center;
+  overflow: scroll;
+  box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+-webkit-box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+-moz-box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+}
+
+#input-buttons{
+  display: flex;
+  height: 300;
+  border:1px solid;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+-webkit-box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+-moz-box-shadow: 7px 10px 24px -1px rgba(0,0,0,0.3);
+}
+
+#input-buttons button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:2px;
+  margin:5px;
+  border-radius: 30%;
+  height: 50px;
+}

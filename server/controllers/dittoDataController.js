@@ -27,7 +27,7 @@ dittoDataController.addSchema = (req, res, next) => {
       return next(err);
     }
   });
-
+  console.log('finished db query');
   res.locals.dummyData = dummyDataResponse;
   return next();
 };
