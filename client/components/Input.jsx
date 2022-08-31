@@ -43,8 +43,8 @@ export default function Input(props) {
           <option value='name'>Last Name</option>
           <option value='email'>Email</option>
           <option value='cc_num'>Credit Card Number</option>
-          <option value='cc_expire'>Credit Card Expiration Date</option>
-          <option value='trans_date'>Transaction Date</option>
+          <option value='date'>Credit Card Expiration Date</option>
+          <option value='date'>Transaction Date</option>
           <option value='bank'>Bank</option>   
         </select>
       </div>

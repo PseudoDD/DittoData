@@ -49,9 +49,11 @@ export default function InputsDisplay(props) {
   return (
     <>
       <div className="outer-inputs-container">
-        <div id='inputs-container'>
           <h2>Create your schema here!</h2>
+        <div id='inputs-container'>
+          <div className='inner-inputs-container'>
           {inputComponents}
+          </div>
         </div>
         <span id='input-buttons'>
           <button onClick={handleAddField}>Add Field</button>
