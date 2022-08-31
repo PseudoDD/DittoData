@@ -1,28 +1,37 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Schema from './Schema.jsx'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Schema from './Schema.jsx';
 
 export default function SchemasDisplay() {
   const [schemas, setSchemas] = useState({});
 
   const data = { user_id: 2 };
-  
+
   useEffect(() => {
-    axios.post('http://localhost:3000/api', data)
-    .then((res) => setSchemas(res.data))
-    .catch((err) => console.log(err));
-  },[])
-  
+    axios
+      .post('http://localhost:3000/api', data)
+      .then((res) => {
+        setSchemas(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const componentsArray = [];
-  for(let i = 0; i < schemas.length; i++) {
-    const newSchema = <Schema schemaNumber={i} schema={schemas[i].schemacolumns} />
+  for (let i = 0; i < schemas.length; i++) {
+    const newSchema = (
+      <Schema
+        schemaNumber={i}
+        schema={schemas[i].schemacolumns}
+        schema_id={schemas[i].schema_id}
+      />
+    );
     componentsArray.push(newSchema);
-  };
-  
+  }
+
   return (
     <div className='outer-schema-display'>
-      <h2>Your Schemas</h2>
+      <h2 className='schema-display-title'>Past Schemas Generated</h2>
       {componentsArray}
     </div>
-  )
+  );
 }

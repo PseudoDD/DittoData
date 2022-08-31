@@ -7,7 +7,7 @@ export default function Input(props) {
 
   const initial = useRef(true);
   useEffect(() => {
-    if(!initial.current) {
+    if (!initial.current) {
       const row = { id: props.id, value: {} };
       row.value[fname] = ftype;
       let found = false;
@@ -47,13 +47,11 @@ export default function Input(props) {
           onChange={(e) => setftype(e.target.value)}
         >
           <option></option>
-          <option value='name'>First Name</option>
-          <option value='name'>Last Name</option>
+          <option value='name'>Name</option>
           <option value='email'>Email</option>
           <option value='cc_num'>Credit Card Number</option>
-          <option value='date'>Credit Card Expiration Date</option>
-          <option value='date'>Transaction Date</option>
-          <option value='bank'>Bank</option>   
+          <option value='date'>Date</option>
+          <option value='bank'>Bank</option>
         </select>
       </div>
     </div>

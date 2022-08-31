@@ -12,4 +12,8 @@ router.post('/add', dittoDataController.addSchema, (req, res) =>
   res.status(200).json(res.locals.dummyData)
 );
 
+router.delete('/delete/:id', dittoDataController.deleteSchema, (req, res) =>
+  res.sendStatus(200)
+);
+
 module.exports = router;

@@ -31,4 +31,20 @@ dittoDataController.addSchema = (req, res, next) => {
   return next();
 };
 
+dittoDataController.deleteSchema = (req, res, next) => {
+  const schemaID = req.params.id;
+  const queryString = `
+    DELETE FROM schemaTable
+    WHERE schema_id='${schemaID}'
+  `;
+  console.log('Delete query String: ', queryString);
+  db.query(queryString, (err) => {
+    if (err) {
+      return next(err);
+    }
+  });
+
+  return next();
+};
+
 module.exports = dittoDataController;
