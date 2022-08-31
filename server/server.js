@@ -2,38 +2,12 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-// const cors = require('cors');
 require('./auth.js');
 
 const app = express();
 
-// app.use(cors());
-// app.use(
-//   cors({
-//     origin: 'http://localhost:8080',
-//     optionsSuccessStatus: 200,
-//     credentials: true,
-//   })
-// );
-
-// app.use(function (req, res, next) {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Methods', '*');
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept'
-//   );
-//   res.header('Access-Control-Allow-Credentials', 'true');
-//   next();
-// });
-
-// app.options('/*', (_, res) => {
-//   res.sendStatus(200);
-// });
-
 function isLoggedIn(req, res, next) {
   if (req.user) {
-    // console.log(req);
     next();
   } else {
     res.sendStatus(401);
@@ -44,16 +18,8 @@ app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.get('/', (req, res) => {
-//   res.send('<a href="/auth/google">Authenticate with Google</a>');
-// });
-
 app.get(
   '/auth/google',
-  // (req, res, next) => {
-  //   console.log('auth google middleware');
-  //   return next();
-  // },
   passport.authenticate('google', { scope: ['email', 'profile'] })
 );
 
@@ -65,15 +31,15 @@ app.get(
   })
 );
 
-// app.get('/protected', isLoggedIn, (req, res) => {
-//   res.status(200).redirect('http://localhost:8080/#/');
-//   console.log('redirected');
-// });
-
-app.get('/protected', (req, res) => {
-  if (req.user) res.status(200).json(req.user);
-  else res.status(200).json(null);
+app.get('/protected', isLoggedIn, (req, res) => {
+  res.status(200).redirect('http://localhost:8080/');
+  console.log('redirected');
 });
+
+// app.get('/protected', (req, res) => {
+//   if (req.user) res.status(200).json(req.user);
+//   else res.status(200).json(null);
+// });
 
 app.get('/logout', (req, res) => {
   req.logout();

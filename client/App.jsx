@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import MainContainer from './containers/MainContainer.jsx';
 import { Routes, Route, HashRouter } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Dashboard from './components/Dashboard.jsx';
@@ -9,24 +8,20 @@ import './assests/styles.css';
 
 function App() {
   // TODO: Merge with backend login work to setLoggedIn properly
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   if (loggedIn) {
     return (
       <div className='App'>
-        <button
-          onClick={() => {
-            console.log('Are we logged in? ', loggedIn);
-          }}
-        >
-          Log State
-        </button>
         <HashRouter>
           <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
           <Routes>
             <Route path='/' element={<Dashboard />} />
             <Route path='/schemas' element={<SchemasDisplay />} />
-            <Route path='/login' element={<Login />} />
+            <Route
+              path='/login'
+              element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+            />
           </Routes>
         </HashRouter>
       </div>
@@ -34,14 +29,7 @@ function App() {
   } else {
     return (
       <>
-        <button
-          onClick={() => {
-            console.log('Are we logged in? ', loggedIn);
-          }}
-        >
-          Log State
-        </button>
-        <Login />
+        <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       </>
     );
   }

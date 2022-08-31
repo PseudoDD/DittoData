@@ -41,38 +41,17 @@ const config = {
     ],
   },
   devServer: {
-    host: 'localhost',
-    port: 8080,
-    hot: true,
-    proxy: {
-      '/api/**': {
-        target: 'http://localhost:3000',
-        secure: false,
-      },
-      '/oauth/**': {
-        target: 'http://localhost:3000',
-        secure: false,
-      },
-      '/protected/**': {
-        target: 'http://localhost:3000',
-        secure: false,
-      },
-      '/logout': {
-        target: 'http://localhost:3000',
-        secure: false,
-      },
-      '/google/**': {
-        target: 'http://localhost:3000',
-        secure: false,
-      },
-    },
     static: {
-      directory: path.join(__dirname, 'dist'),
-      publicPath: '/dist',
+      directory: './dist',
     },
-    historyApiFallback: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+    },
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
