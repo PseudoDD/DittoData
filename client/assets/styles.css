@@ -92,15 +92,13 @@
   padding: 20px;
 }
 
-.google-btn {
-  background-color: rgb(198, 198, 198);
-  cursor: pointer;
+.inputElementsContainer {
+  display: flex;
+  width: 70%;
+  justify-content: space-evenly;
+  padding: 10px;
 }
 
-.google-btn:hover {
-  filter: brightness(80%);
-}
-
-.google-btn:active {
-  filter: brightness(50%);
+.inputElement {
+  display: flex;
 }
