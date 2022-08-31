@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import Login from './components/Login.jsx';
 import SchemasDisplay from './components/SchemasDisplay.jsx';
-import './assests/styles.css';
+import './assets/styles.css';
 
 function App() {
   // TODO: Merge with backend login work to setLoggedIn properly

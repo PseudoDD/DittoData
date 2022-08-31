@@ -74,7 +74,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 app.use('/api', apiRouter);
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) => res.status(404).send('Page not'));
+app.use((req, res) => res.status(404).send('Page not found.'));
 
 /**
  * express error handler

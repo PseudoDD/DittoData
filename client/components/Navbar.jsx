@@ -15,8 +15,7 @@ export default function Navbar(props) {
       <div className='navbar-logo'>
         <img
           src={
-            require('../assests/img/dittodragonite-removebg-preview.png')
-              .default
+            require('../assets/img/dittodragonite-removebg-preview.png').default
           }
         />
         DittoData

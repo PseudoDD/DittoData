@@ -1,35 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import Input from './Input.jsx'
+import React, { useState, useEffect } from 'react';
+import Input from './Input.jsx';
 
 export default function InputsDisplay() {
-  const [inputs, setInputs] = useState([]);  
+  const [inputs, setInputs] = useState([]);
   const [inputNumber, setInputNumber] = useState(0);
   const [inputComponents, setinputComponents] = useState([]);
 
   useEffect(() => {
     const initialArray = [];
     let counter = 0;
-    while(counter !== 4) {
-      const newInput = <Input id={counter} inputs={inputs} setInputs={setInputs}/>;
+    while (counter !== 4) {
+      const newInput = (
+        <Input id={counter} inputs={inputs} setInputs={setInputs} />
+      );
       initialArray.push(newInput);
       counter++;
-    };
+    }
     setInputNumber(4);
     setinputComponents([...initialArray]);
-  },[]); 
+  }, []);
 
-  const handleAddField = ()=> {
+  const handleAddField = () => {
     console.log('handlingAddField');
-    const newInput = <Input id={inputNumber} inputs={inputs} setInputs={setInputs}/>;
+    const newInput = (
+      <Input id={inputNumber} inputs={inputs} setInputs={setInputs} />
+    );
     setinputComponents([...inputComponents, newInput]);
     let newInputNumber = inputNumber;
     newInputNumber++;
     setInputNumber(newInputNumber);
-  }
+  };
 
-  const handleCreateSchema = ()=> {
+  const handleCreateSchema = () => {
     console.log(inputs);
-  }
+  };
 
   return (
     <>
@@ -43,8 +47,8 @@ export default function InputsDisplay() {
       </div>
       <div id='input-buttons'>
         <button onClick={handleAddField}>Add Field</button>
-        <button onClick={handleCreateSchema}>Create Schema</button> 
+        <button onClick={handleCreateSchema}>Create Schema</button>
       </div>
     </>
-  )
+  );
 }
