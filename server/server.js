@@ -2,23 +2,34 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const cors = require('cors');
+// const cors = require('cors');
 require('./auth.js');
 
 const app = express();
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.header('Access-Control-Allow-Credentials', 'true');
-  next();
-});
 // app.use(cors());
-// app.use(cors({ origin: 'http://localhost:8080',optionsSuccessStatus: 200, credentials: true }));
+// app.use(
+//   cors({
+//     origin: 'http://localhost:8080',
+//     optionsSuccessStatus: 200,
+//     credentials: true,
+//   })
+// );
+
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', '*');
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   res.header('Access-Control-Allow-Credentials', 'true');
+//   next();
+// });
+
+// app.options('/*', (_, res) => {
+//   res.sendStatus(200);
+// });
 
 function isLoggedIn(req, res, next) {
   if (req.user) {
@@ -33,19 +44,16 @@ app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', (req, res) => {
-  res.send('<a href="/auth/google">Authenticate with Google</a>');
-});
-
 // app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, 'dist/index.html'));
+//   res.send('<a href="/auth/google">Authenticate with Google</a>');
 // });
 
 app.get(
   '/auth/google',
-  (req, res, next) => {
-    return next();
-  },
+  // (req, res, next) => {
+  //   console.log('auth google middleware');
+  //   return next();
+  // },
   passport.authenticate('google', { scope: ['email', 'profile'] })
 );
 
@@ -57,13 +65,14 @@ app.get(
   })
 );
 
-app.get('/protected', isLoggedIn, (req, res) => {
-  res.status(200).redirect('http://localhost:8080/#/');
+// app.get('/protected', isLoggedIn, (req, res) => {
+//   res.status(200).redirect('http://localhost:8080/#/');
+//   console.log('redirected');
+// });
 
-  // res.status(200).redirect(303, '/');
-
-  // res.status(200).send('status');
-  console.log('redirected');
+app.get('/protected', (req, res) => {
+  if (req.user) res.status(200).json(req.user);
+  else res.status(200).json(null);
 });
 
 app.get('/logout', (req, res) => {
@@ -99,9 +108,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 app.use('/api', apiRouter);
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) =>
-  res.status(404).send("This is not the page you're looking for...")
-);
+app.use((req, res) => res.status(404).send('Page not'));
 
 /**
  * express error handler

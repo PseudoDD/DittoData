@@ -43,35 +43,35 @@ const config = {
   devServer: {
     host: 'localhost',
     port: 8080,
-    // enable HMR on the devServer
     hot: true,
-    // fallback to root for other urls
-    historyApiFallback: true,
-
-    static: {
-      // match the output path
-      directory: path.resolve(__dirname, 'dist'),
-      // match the output 'publicPath'
-      publicPath: '/',
-    },
-
-    headers: { 'Access-Control-Allow-Origin': '*' },
-    /**
-     * proxy is required in order to make api calls to
-     * express server while using hot-reload webpack server
-     * routes api fetch requests from localhost:8080/api/* (webpack dev server)
-     * to localhost:3000/api/* (where our Express server is running)
-     */
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000/',
+      '/api/**': {
+        target: 'http://localhost:3000',
         secure: false,
       },
-      '/oauth/': {
-        target: 'http://localhost:3000/',
+      '/oauth/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+      '/protected/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+      '/logout': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+      '/google/**': {
+        target: 'http://localhost:3000',
         secure: false,
       },
     },
+    static: {
+      directory: path.join(__dirname, 'dist'),
+      publicPath: '/dist',
+    },
+    historyApiFallback: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
   },
   plugins: [
     new HtmlWebpackPlugin({

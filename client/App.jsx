@@ -9,7 +9,7 @@ import './assests/styles.css';
 
 function App() {
   // TODO: Merge with backend login work to setLoggedIn properly
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   if (loggedIn) {
     return (

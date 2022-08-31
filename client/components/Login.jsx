@@ -2,21 +2,36 @@ import React from 'react';
 import { Box, Typography, Button } from '@mui/material';
 
 export default function Login() {
-  const authenticate = async () => {
-    const axiosGet = await fetch('/auth/google', {
-      mode: 'no-cors',
-    })
-      // .then((res) => res.json())
-      .then((data) => console.log('data: ', data));
+  // const authenticate = async () => {
+  //   const axiosGet = await fetch('', {
+  //     // mode: 'no-cors',
+  //   })
+  //     // .then((res) => res.json())
+  //     .then((data) => console.log('data: ', data));
 
-    console.log('Fetched: ', axiosGet);
+  //   console.log('Fetched: ', axiosGet);
+  // };
+
+  const authenticate = async () => {
+    await fetch(
+      `/protected/`
+      // , {
+      // mode: 'cors',
+      // headers: {
+      //   'Content-Type': 'Application/JSON',
+      // },
+      // }
+    )
+      // .then((response) => response.json())
+      .then((data) => console.log('data: ', data))
+      .catch((err) => console.log('Authentication error: ', err));
   };
 
   return (
     <>
       <Box className='loginContainer'>
         <Typography className='login-welcome'>
-          Welcome to DittoData signin to get mocking
+          <p>Welcome to DittoData Sign in to get mocking</p>
         </Typography>
         <Button
           className='login-btn'
@@ -26,7 +41,7 @@ export default function Login() {
             location.href = 'http://localhost:3000/auth/google';
           }}
         >
-          Sign in with Oauth
+          Sign in with Oauth (href)
         </Button>
       </Box>
       <div>
@@ -37,7 +52,7 @@ export default function Login() {
             authenticate();
           }}
         >
-          Authenticate with Google+
+          Authenticate with On-click function
         </a>
         {/* <button
           onClick={() => {

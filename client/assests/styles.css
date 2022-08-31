@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500&display=swap');
 .navbar {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   border-radius: 20px;
   background-color: whitesmoke;
@@ -90,4 +90,17 @@
 }
 .login-btn {
   padding: 20px;
+}
+
+.google-btn {
+  background-color: rgb(198, 198, 198);
+  cursor: pointer;
+}
+
+.google-btn:hover {
+  filter: brightness(80%);
+}
+
+.google-btn:active {
+  filter: brightness(50%);
 }
