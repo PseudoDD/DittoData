@@ -145,7 +145,6 @@
 
 #input-buttons{
   display: flex;
-  height: 300;
   border:1px solid;
   flex-direction: row;
   justify-content: flex-end;
