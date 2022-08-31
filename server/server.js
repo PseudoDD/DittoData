@@ -2,29 +2,25 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
-const cors = require('cors');
 require('./auth.js');
 
 const app = express();
 
-app.use(cors());
-
 function isLoggedIn(req, res, next) {
-  req.user ? next() : res.sendStatus(401);
+  if (req.user) {
+    next();
+  } else {
+    res.sendStatus(401);
+  }
 }
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', (req, res) => {
-  res.send('<a href="/auth/google">Authenticate with Google</a>');
-});
-
 app.get(
   '/auth/google',
-  passport.authenticate('google', { scope: ['email', 'profile'] }),
-  () => console.log('test2')
+  passport.authenticate('google', { scope: ['email', 'profile'] })
 );
 
 app.get(
@@ -36,8 +32,14 @@ app.get(
 );
 
 app.get('/protected', isLoggedIn, (req, res) => {
-  res.redirect('http://localhost:8080/loggedin');
+  res.status(200).redirect('http://localhost:8080/');
+  console.log('redirected');
 });
+
+// app.get('/protected', (req, res) => {
+//   if (req.user) res.status(200).json(req.user);
+//   else res.status(200).json(null);
+// });
 
 app.get('/logout', (req, res) => {
   req.logout();
@@ -50,6 +52,7 @@ app.get('/auth/google/failure', (req, res) => {
   res.send('Failed to authenticate..');
 });
 
+//
 const apiRouter = require('./routes/api');
 
 const PORT = 3000;
@@ -71,9 +74,7 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 app.use('/api', apiRouter);
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) =>
-  res.status(404).send("This is not the page you're looking for...")
-);
+app.use((req, res) => res.status(404).send('Page not'));
 
 /**
  * express error handler
