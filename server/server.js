@@ -2,9 +2,12 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
+const cors =  require('cors');
+
 require('./auth.js');
 
 const app = express();
+app.use(cors());
 
 function isLoggedIn(req, res, next) {
   if (req.user) {
@@ -12,7 +15,7 @@ function isLoggedIn(req, res, next) {
   } else {
     res.sendStatus(401);
   }
-}
+} 
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());

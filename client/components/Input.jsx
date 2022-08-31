@@ -8,8 +8,8 @@ export default function Input(props) {
   const initial = useRef(true);
   useEffect(() => {
     if (!initial.current) {
-      const row = { id: props.id };
-      row[fname] = ftype;
+      const row = { id: props.id, value: {} };
+      row.value[fname] = ftype;
       let found = false;
 
       for (let i = 0; i < props.inputs.length; i++) {
@@ -47,12 +47,11 @@ export default function Input(props) {
           onChange={(e) => setftype(e.target.value)}
         >
           <option></option>
-          <option value='placeholder'>Placeholder</option>
-          <option value='placeholder'>Placeholder</option>
-          <option value='placeholder'>Placeholder</option>
-          <option value='placeholder'>Placeholder</option>
-          <option value='placeholder'>Placeholder</option>
-          <option value='placeholder'>Placeholder</option>
+          <option value='name'>Name</option>
+          <option value='email'>Email</option>
+          <option value='cc_num'>Credit Card Number</option>
+          <option value='date'>Date</option>
+          <option value='bank'>Bank</option>
         </select>
       </div>
     </div>
