@@ -39,10 +39,13 @@ DittoData allows developers to create dummy data.
 
 <ul>
  <li> <a href="https://reactjs.org/">React.js</a></li>
+  <li> <a href="https://v5.reactrouter.com/web/api/HashRouter">React Hash Router</a></li>
  <li> <a href="https://expressjs.com/">Express</a></li>
  <li> <a href="https://nodejs.org/en/">Node.js</a></li>
- <li> <a href="https://www.elephantsql.com/">ElephantSQL</a></li>
- <li> <a href="https://jestjs.io/">Jest</a></li>
+  <li> <a href="https://mui.com/">Material UI</a></li>
+ <li> <a href="https://www.postgresql.org/">PostgreSQL</a></li>
+ <li> <a href="https://www.passportjs.org/">Passport.js</a></li>
+  <li> <a href="https://github.com/visionmedia/supertest">Supertest</a></li>
 
 </ul>
 
@@ -61,7 +64,7 @@ DittoData allows developers to create dummy data.
 
 ### Installation
 
-1. Get a free ElephantSQL URI at [https://www.elephantsql.com/](https://www.elephantsql.com/).
+1. Get a free ElephantSQL URI from [https://www.elephantsql.com/](https://www.elephantsql.com/) and Google OAuth Client ID / Client Secret from https://console.cloud.google.com/apis/credentials.
 2. Clone the repo
    ```sh
    git clone https://github.com/PseudoDD/DittoData.git
@@ -70,10 +73,12 @@ DittoData allows developers to create dummy data.
    ```sh
    npm install
    ```
-4. Create `.env` in the root directory and enter your Database URI
+4. Create `.env` in the root directory and enter your Database URI, Google Client ID, and Google Client Secret
 
    ```js
    const DB_KEY = 'ENTER YOUR ELEPHANTSQL URI';
+   const GOOGLE_CLIENT_ID = 'ENTER YOUR GOOGLE CLIENT ID';
+   const GOOGLE_CLIENT_SECRET = 'ENTER YOUR GOOGLE CLIENT SECRET';
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -83,11 +88,11 @@ DittoData allows developers to create dummy data.
 ## Roadmap
 
 - [x] Creating database.
-- [ ] Placeholder.
-- [ ] Placeholder.
-- [ ] Placeholder.
-- [ ] Placeholder.
-- [ ] Placeholder.
+- [x] Implement OAuth.
+- [x] Standardize field types.
+- [x] Create mock data algos.
+- [x] Implement testing with Supertest.
+- [ ] Implement testing with Jest.
 
 <!-- See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues). -->
 
